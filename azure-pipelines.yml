@@ -26,3 +26,11 @@ steps:
     publishWebProjects: True
     arguments: '--configuration $(BuildConfiguration) --output $(Build.ArtifactStagingDirectory)'
     zipAfterPublish: True
+    
+- task: AzureRmWebAppDeployment@4
+  inputs:
+    ConnectionType: 'AzureRM'
+    azureSubscription: 'Visual Studio Enterprise – MPN (3a4677e7-3d48-463f-aae7-db14ca3293d8)'
+    appType: 'webApp'
+    WebAppName: 'WebApplication220190415090101'
+    packageForLinux: '$(System.ArtifactsDirectory)/**/*.zip'
